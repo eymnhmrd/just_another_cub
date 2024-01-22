@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/01/21 02:10:05 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:08:13 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void    free_towd(char **str);
 
 void    init_window(t_cub *cub);
 void    draw(t_cub *cub);
+// void    keyhandle(t_cub *cub);
 void    keyhandle(mlx_key_data_t key_data, void *cub);
 void    draw_player(t_cub *cub);
 

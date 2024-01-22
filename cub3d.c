@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:20:47 by otaraki           #+#    #+#             */
-/*   Updated: 2024/01/21 03:08:04 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/01/22 17:05:03 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int ft_parse_cub(t_cub *cub, char *arg)
     ft_bzero(cub, sizeof(t_cub));
     if (!ft_parse_map(cub, fd))
         return (0);
+    if (!check_textures(cub))
+        return (ft_error(cub, "Error: Wrong texture P\n"));
+    if (!check_map(cub))
+        return (ft_error(cub, "Error: Wrong map, 2\n"));
     return (1);
 }
 
@@ -93,7 +97,7 @@ int		main(int argc, char **argv)
     raycaster(&cub);
     // mlx_image_to_window(cub.mlx.mlx, cub.mlx.img.img, 0, 0); 
 
-    mlx_key_hook(cub.mlx.mlx, keyhandle, &cub);
+    mlx_key_hook(cub.mlx.mlx, (void *)keyhandle, &cub);
     mlx_loop(cub.mlx.mlx);
     mlx_terminate(cub.mlx.mlx);
     return (0);

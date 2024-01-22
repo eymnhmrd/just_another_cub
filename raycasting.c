@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:23:30 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/01/21 03:35:18 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/01/22 18:32:49 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@ double  distance(double x1, double x2, double y1, double y2)
 {
     return (sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)));
 }
+
+int get_ceiling(t_ceiling *ceiling)
+{
+    return (ceiling->r << 16 | ceiling->g << 8 | ceiling->b);
+}
+
+int get_floor(t_floor *floor)
+{
+    return (floor->r << 16 | floor->g << 8 | floor->b);
+}
+
 
 void    check_directions(t_cub *cub, double angle_ray)
 {
@@ -169,7 +180,7 @@ void    rendering(t_cub *cub, double angle_ray, int j)
         // printf("%i : i\n", i);
         // printf("%i : j\n", j);
         if (i < WINDOW_HEIGHT && j < WINDOW_WIDTH && i > 0 && j > 0)
-            mlx_put_pixel(cub->mlx.img.img, j, i, 0xfa2569);
+            mlx_put_pixel(cub->mlx.img.img, j, i, get_ceiling(&cub->map.ceiling));
         i++;
     }
     while (i < start + wall)
@@ -181,7 +192,7 @@ void    rendering(t_cub *cub, double angle_ray, int j)
     while (i < WINDOW_HEIGHT)
     {
         if (i < WINDOW_HEIGHT && j < WINDOW_WIDTH && i > 0 && j > 0)
-            mlx_put_pixel(cub->mlx.img.img, j, i, 0xfa2569);
+            mlx_put_pixel(cub->mlx.img.img, j, i, get_floor(&cub->map.floor));
         i++;
     }
 }
@@ -265,6 +276,8 @@ void    init_window(t_cub *cub)
 // {
 //     return (r << 24 | g << 16 | b << 8 | a);
 // }
+
+
 void    draw(t_cub *cub)
 {
     //         int color = ft_pixel(
@@ -272,25 +285,25 @@ void    draw(t_cub *cub)
 	// rand() % 0xFF, // G
 	// rand() % 0xFF, // B
 	// rand() % 0xFF );
-    for (int i = 0; i <  WINDOW_HEIGHT; i++)
-    {
-        // printf("%s\n", cub->map.store_map[i]);
-        for (int j = 0; j < WINDOW_WIDTH; j++)
-        {
-            if(cub->map.store_map[i / TILE_SIZE][j / TILE_SIZE] == '1')
-            {
+    // for (int i = 0; i <  WINDOW_HEIGHT; i++)
+    // {
+    //     // printf("%s\n", cub->map.store_map[i]);
+    //     for (int j = 0; j < WINDOW_WIDTH; j++)
+    //     {
+    //         if(cub->map.store_map[i / TILE_SIZE][j / TILE_SIZE] == '1')
+    //         {
                 
-                mlx_put_pixel(cub->mlx.img.img, j, i, 0xFFFF);
-            }
-            else if(cub->map.store_map[i / 64][j / 64] == 'N')// 'N' is the player 
-            {
-                mlx_put_pixel(cub->mlx.img.img, (int)cub->player.y, (int)cub->player.x, 0xffffff);
+    //             mlx_put_pixel(cub->mlx.img.img, j, i, 0xFFFF);
+    //         }
+    //         // else if(cub->map.store_map[i / 64][j / 64] == 'N')// 'N' is the player 
+    //         // {
+    //         //     mlx_put_pixel(cub->mlx.img.img, (int)cub->player.y, (int)cub->player.x, 0xffffff);
                 
-            }
-            else
-                mlx_put_pixel(cub->mlx.img.img, j, i, 0);
-        }
-    }
+    //         // }
+    //         else
+    //             mlx_put_pixel(cub->mlx.img.img, j, i, color);
+    //     }
+    // }
     // mlx_put_pixel(cub->mlx.img.img, (int)cub->player.y, (int)cub->player.x, 0xffffff);
     for (int i = 0; i <= WINDOW_WIDTH; i++)
     {
