@@ -6,10 +6,9 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/01/22 16:08:13 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/01/22 20:12:01 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -74,8 +73,6 @@ typedef struct s_ray
     double  deltax;
     double  deltay;
     int up_or_down;
-    int h_y_p;
-    int v_x_p;
     int right_or_left;
     double  angle_ray;
 }				t_ray;

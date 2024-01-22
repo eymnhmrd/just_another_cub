@@ -6,7 +6,7 @@
 #    By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 23:12:18 by otaraki           #+#    #+#              #
-#    Updated: 2024/01/21 02:09:28 by ahamrad          ###   ########.fr        #
+#    Updated: 2024/01/22 20:49:59 by ahamrad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ re : fclean all
 
 run:
 	make all;
-	./cub3d map.cub
+	./cub3d map1.cub
 
 git :
 	git add .
